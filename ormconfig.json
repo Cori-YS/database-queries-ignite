@@ -1,9 +1,8 @@
 {
   "username": "postgres",
-  "password": "docker",
+  "password": "password",
 
   "type": "postgres",
-  "name": "default",
   "host": "localhost",
   "port": 5432,
   "database": "queries_challenge",
