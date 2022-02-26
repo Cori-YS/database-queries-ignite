@@ -14,7 +14,6 @@ export class UsersRepository implements IUsersRepository {
   async findUserWithGamesById({
     user_id,
   }: IFindUserWithGamesDTO): Promise<User> {
-    // Complete usando ORM
     const userRepo = this.repository;
 
     const user = await userRepo.findOneOrFail({
@@ -28,7 +27,7 @@ export class UsersRepository implements IUsersRepository {
   async findAllUsersOrderedByFirstName(): Promise<User[]> {
     return await this.repository.query(
       `SELECT * FROM users ORDER BY first_name ASC`
-    ); // Complete usando raw query
+    );
   }
 
   async findUserByFullName({
@@ -38,6 +37,6 @@ export class UsersRepository implements IUsersRepository {
     return await this.repository.query(
       `SELECT * FROM users WHERE Lower(first_name) = Lower($1) AND Lower(last_name) = Lower($2)`,
       [first_name, last_name]
-    ); // Complete usando raw query
+    );
   }
 }

@@ -17,11 +17,10 @@ export class GamesRepository implements IGamesRepository {
       .createQueryBuilder()
       .where(`LOWER(title) like LOWER(:param)`, { param: `%${param}%` })
       .getMany();
-    // Complete usando query builder
   }
 
   async countAllGames(): Promise<[{ count: string }]> {
-    return this.repository.query(`SELECT COUNT(*) FROM games`); // Complete usando raw query
+    return this.repository.query(`SELECT COUNT(*) FROM games`);
   }
 
   async findUsersByGameId(id: string): Promise<User[]> {
@@ -30,6 +29,5 @@ export class GamesRepository implements IGamesRepository {
       .relation(Game, `users`)
       .of(id)
       .loadMany();
-    // Complete usando query builder
   }
 }
